@@ -1,0 +1,46 @@
+@import '../../scss/variables.scss';
+
+.auth {
+    width: 500px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+
+    &-title {
+        font-size: 35px;
+        font-weight: 400;
+        margin-bottom: 15px;
+    }
+
+    &-link {
+        display: block;
+        color: $green-color;
+        margin-bottom: 30px;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px 0;
+    }
+
+    &-control {
+        & > *:first-child {
+            width: 100%;
+        }
+    }
+
+    &-submit {
+        width: max-content;
+        margin-left: auto;
+    }
+
+    &-mess {
+        font-size: 13px;
+        text-align: left;
+        color: red;
+        margin-top: 7px;
+    }
+}
+

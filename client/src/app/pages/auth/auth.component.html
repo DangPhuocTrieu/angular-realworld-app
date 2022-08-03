@@ -1,0 +1,30 @@
+<div class="auth">
+    <h2 class="auth-title">{{title}}</h2>
+    <a class="auth-link" routerLink="/register" *ngIf="authType === 'login'">Need an account?</a>
+    <a class="auth-link" routerLink="/login" *ngIf="authType === 'register'">Have an account?</a>
+
+    <form class="auth-form" [formGroup]="authForm" (ngSubmit)="handleSubmit(authForm)">
+        <div class="auth-control" *ngIf="authType === 'register'">
+            <input type="text" pInputText formControlName="username" placeholder="Username" />
+            <div class="auth-mess" *ngIf="authForm.get('username')?.errors && authForm.get('username')?.touched">
+                <p *ngIf="authForm.get('username')?.errors?.['required']">Username is required</p>
+            </div>
+        </div>
+        <div class="auth-control">
+            <input type="text" pInputText formControlName="email" placeholder="Email" />
+            <div class="auth-mess" *ngIf="authForm.get('email')?.errors && authForm.get('email')?.touched">
+                <p *ngIf="authForm.get('email')?.errors?.['required']">Email is required</p>
+                <p *ngIf="authForm.get('email')?.errors?.['email']">Email is not valid</p>
+            </div>
+        </div>
+        <div class="auth-control">
+            <input type="password" pPassword [feedback]="false" placeholder="Password" formControlName="password" />
+            <div class="auth-mess" *ngIf="authForm.get('password')?.errors && authForm.get('password')?.touched">
+                <p *ngIf="authForm.get('password')?.errors?.['required']">Password is required</p>
+            </div>
+        </div>
+        <button pButton class="auth-submit p-button-success">{{title}}</button>
+    </form>
+</div>
+
+<p-toast></p-toast>

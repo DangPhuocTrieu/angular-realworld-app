@@ -1,0 +1,18 @@
+@import '../../scss/variables.scss';
+
+.banner {
+    text-align: center;
+    padding: 40px 0;
+    background-color: $green-color;
+    color: white;
+
+    &-caption {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    &-desc {
+        font-weight: 200;
+        font-size: 22px;
+    }
+}
