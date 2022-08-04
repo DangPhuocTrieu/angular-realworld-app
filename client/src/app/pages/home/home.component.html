@@ -1,0 +1,26 @@
+<app-banner></app-banner>
+
+<div class="home">
+    <div class="home-main container">
+        <div class="home-list">
+            <p-tabView [(activeIndex)]="tabActive" (onChange)="handleChange()">
+                <p-tabPanel header="Your feed">
+                   <app-article [type]="type"></app-article>
+                </p-tabPanel>
+                <p-tabPanel header="Global feed">
+                    <app-article [type]="type"></app-article>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+
+        <div class="home-tags">
+            <h4>Popular Tags</h4>
+            <ul class="home-tags__list">
+                <li>implementations</li>
+                <li>welcome</li>
+                <li>introduction</li>
+                <li>codebaseShow</li>
+            </ul>
+        </div>
+    </div>
+</div>

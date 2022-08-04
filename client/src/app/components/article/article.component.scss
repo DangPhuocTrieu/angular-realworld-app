@@ -1,0 +1,46 @@
+@import '../../scss/variables.scss';
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0;
+
+    &-item {
+        
+    }
+
+    &-user {
+        display: flex;
+        align-items: center;
+
+        &-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 100rem;
+            margin-right: 5px;
+        }
+
+        &-info {
+            h4 {
+                font-size: 14px;
+                font-weight: 500;
+                color: $green-color;
+            }
+            span {
+                font-size: 12px;
+                color: #bbb;
+            }
+        }
+
+        &-heart {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0 5px;
+            font-size: 12px;
+            color: $green-color;
+            border: 1px solid $green-color;
+            padding: 6px 9px;
+            border-radius: 4px;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.home {
+    &-main {
+        display: flex;
+        gap: 0 30px;
+    }
+
+    &-list {
+        flex: 1;
+    }
+
+    &-tags {
+        width: 255px;
+        height: max-content;
+        padding: 10px;
+        background-color: #f3f3f3;
+
+        h4 {
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+
+            li {
+                font-size: 11px;
+                color: white;
+                background-color: #818a91;
+                padding: 6px 7px;
+                border-radius: 12px;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BannerComponent } from './components/banner/banner.component';
+import { ArticleComponent } from './components/article/article.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { HomeModule } from './pages/home/home.module';
 
 
 @NgModule({
@@ -13,12 +14,12 @@ import { AuthModule } from './pages/auth/auth.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

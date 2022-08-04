@@ -1,0 +1,18 @@
+<ul class="article">
+    <li class="article-item" *ngFor="let article of articles">
+        <div class="article-user">
+            <img [src]="article.author.avatar ? article.author.avatar : AVT_USER_DEF" [alt]="article.title" class="article-user-avatar">
+            <div class="article-user-info">
+                <h4 class="article-user-name">{{article.author.username}}</h4>
+                <span class="article-user-time">November 24, 2021</span>
+            </div>
+            <div class="article-user-heart">
+                <i class="pi pi-heart"></i>
+                <span>{{article.favoritesCount}}</span>
+            </div>
+        </div>
+        <div class="article-content">
+            
+        </div>
+    </li>
+</ul>

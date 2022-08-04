@@ -4,9 +4,23 @@
             <a routerLink="/">conduit</a>
         </div>
         <ul class="header-list">
-            <li class="header-item">Home</li>
-            <li class="header-item" routerLink="/login">Sign in</li>
-            <li class="header-item" routerLink="/register">Sign up</li>
+            <li class="header-item" routerLink="/">Home</li>
+            <ng-container *ngIf="!currentUser; else isAuthenticated">
+                <li class="header-item" routerLink="/login">Sign in</li>
+                <li class="header-item" routerLink="/register">Sign up</li>
+            </ng-container>
         </ul>
+
+        <ng-template #isAuthenticated>
+            <li class="header-item">
+                <i class="pi pi-check-square"></i>
+                <span>New Article</span>
+            </li>
+            <li class="header-item">
+                <i class="pi pi-cog"></i>
+                <span>Settings</span>
+            </li>
+            <li class="header-item">{{currentUser.username}}</li>
+        </ng-template>
     </div>
 </div>
