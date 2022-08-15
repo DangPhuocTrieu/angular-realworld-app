@@ -1,0 +1,113 @@
+
+@import '../../scss/mixin.scss';
+@import '../../scss/variables.scss';
+
+.detail {
+    &-top {
+        padding: 32px 0;
+        background-color: #333;
+        margin-bottom: 30px;
+
+        &-title {
+            font-size: 38px;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 30px;
+        }
+    }
+
+    &-content {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+
+        &-body {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+    }
+
+    &-templ {
+        @include flex;
+        gap: 0 20px;
+
+        &-user {
+            @include flex;
+            gap: 0 5px;
+        }
+    
+        &-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 100rem;
+        }
+    
+        &-info {
+            color: white;
+    
+            h4 {
+                font-weight: 300;
+                margin-bottom: 3px;
+            }
+    
+            span {
+                font-size: 11px;
+                color: #bbb;
+            }
+        }
+
+        &-actions {
+            @include flex;
+            gap: 0 5px;
+
+            button {
+                padding: 6px 7px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    &-centerTempl {
+        & > * {
+            width: max-content;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 50px;
+
+            h4 {
+                color: $green-color;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &-comment {
+        width: 700px;
+        margin: 0 auto;
+
+        textarea {
+            width: 100%;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-color: transparent;
+        }
+
+        &-bottom {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            margin-top: -2px;
+            background-color: #f5f5f5;
+            border: 1px solid #ced4da; 
+            border-radius: 0 0 6px 6px;
+
+            button {
+                margin-left: auto;
+                padding: 6px 7px;
+                font-size: 13px;
+            }
+        }
+    }
+}

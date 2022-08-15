@@ -41,3 +41,17 @@ button {
     cursor: pointer;
 }
 
+.tags {
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+
+    & > * {
+        font-size: 12px;
+        font-weight: 300;
+        color: #aaa;
+        padding: 5px 7px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+    }
+}

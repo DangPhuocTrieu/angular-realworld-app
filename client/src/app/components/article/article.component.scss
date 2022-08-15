@@ -1,30 +1,42 @@
 @import '../../scss/variables.scss';
+
 .article {
     display: flex;
     flex-direction: column;
-    gap: 30px 0;
+    gap: 25px 0;
 
     &-item {
-        
+        border-bottom: 1px solid #eee;
+        padding-bottom: 25px;
     }
 
     &-user {
         display: flex;
         align-items: center;
+        margin-bottom: 15px;
 
         &-avatar {
             width: 32px;
             height: 32px;
             border-radius: 100rem;
-            margin-right: 5px;
+            margin-right: 7px;
+            cursor: pointer;
         }
 
         &-info {
             h4 {
+                width: max-content;
                 font-size: 14px;
                 font-weight: 500;
                 color: $green-color;
+                border-bottom: 1px solid transparent;
+                cursor: pointer;
+                transition: 0.1s linear;
+                &:hover {
+                    border-bottom-color: $green-color;
+                }
             }
+
             span {
                 font-size: 12px;
                 color: #bbb;
@@ -42,5 +54,39 @@
             padding: 6px 9px;
             border-radius: 4px;
         }
+    }
+
+    &-content {
+        &-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        &-desc {
+            display: block;
+            color: #999;
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        &-others {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+                font-size: 12px;
+                color: #bbb;
+                font-weight: 300;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-loading {
+        font-size: 15px;
+        text-align: center;
     }
 }

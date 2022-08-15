@@ -1,18 +1,37 @@
-<ul class="article">
-    <li class="article-item" *ngFor="let article of articles">
-        <div class="article-user">
-            <img [src]="article.author.avatar ? article.author.avatar : AVT_USER_DEF" [alt]="article.title" class="article-user-avatar">
-            <div class="article-user-info">
-                <h4 class="article-user-name">{{article.author.username}}</h4>
-                <span class="article-user-time">November 24, 2021</span>
-            </div>
-            <div class="article-user-heart">
-                <i class="pi pi-heart"></i>
-                <span>{{article.favoritesCount}}</span>
-            </div>
-        </div>
-        <div class="article-content">
-            
-        </div>
-    </li>
-</ul>
+<ng-container *ngIf="!isLoading; else loading">
+    <ng-container *ngIf="articles.length > 0; else noArticles">
+        <ul class="article">
+            <li class="article-item" *ngFor="let article of articles">
+                <div class="article-user">
+                    <img [src]="article.author.avatar ? article.author.avatar : AVT_USER_DEF" [alt]="article.title" class="article-user-avatar">
+                    <div class="article-user-info">
+                        <h4 class="article-user-name">{{article.author.username}}</h4>
+                        <span class="article-user-time">November 24, 2021</span>
+                    </div>
+                    <div class="article-user-heart">
+                        <i class="pi pi-heart"></i>
+                        <span>{{article.favoritesCount}}</span>
+                    </div>
+                </div>
+                <div class="article-content">
+                    <h4 class="article-content-title" (click)="handleNavigateDetail(article._id)">{{article.title}}</h4>
+                    <span class="article-content-desc">{{article.description}}</span>
+                    <div class="article-content-others">
+                        <span (click)="handleNavigateDetail(article._id)">Read more...</span>
+                        <ul class="tags" *ngIf="article.tagList">
+                            <li *ngFor="let tag of article.tagList">{{tag}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ng-container>
+</ng-container>
+
+<ng-template #noArticles>
+    <p class="article-loading">No articles are here... yet.</p>
+</ng-template>
+
+<ng-template #loading>
+    <p class="article-loading">Loading articles...</p>
+</ng-template>

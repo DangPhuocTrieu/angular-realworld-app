@@ -24,6 +24,12 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    articles: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Article'
+        }
+    ]
 })
 
 const User = mongoose.model('User', userSchema)

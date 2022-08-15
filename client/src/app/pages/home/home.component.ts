@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
@@ -15,17 +14,19 @@ export class HomeComponent implements OnInit {
   currentUser!: User | null
 
   constructor(
-    private http: HttpClient, 
     private userService: UserService,
     private router: Router
     ) { }
 
   ngOnInit(): void {
     this.currentUser = this.userService.getCurrentUser()
+    if(!this.currentUser) {
+      this.tabActive = 1
+      this.type = 'global'
+    }
   }
 
   handleChangeTab(type: string) {
-    console.log(type)
     this.type = type
   }
 

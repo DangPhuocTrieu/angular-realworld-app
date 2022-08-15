@@ -1,0 +1,47 @@
+<div class="detail" *ngIf="article">
+    <div class="detail-top">
+        <div class="container">
+            <h2 class="detail-top-title">{{article.title}}</h2>
+            <ng-container [ngTemplateOutlet]="userTempl"></ng-container>
+        </div>
+    </div>
+    <div class="container">
+        <div class="detail-content">
+            <p class="detail-content-body">{{article.body}}</p>
+            <ul class="tags" *ngIf="article.tagList">
+                <li *ngFor="let tag of article.tagList">{{tag}}</li>
+            </ul>
+        </div>
+        <div class="detail-centerTempl">
+            <ng-container [ngTemplateOutlet]="userTempl"></ng-container>
+        </div>
+        <div class="detail-comment">
+            <textarea rows="5" pInputTextarea [autoResize]="true" placeholder="Write a comment..."></textarea>
+            <div class="detail-comment-bottom">
+                <button pButton class="p-button-success" label="Post Comment"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #userTempl>
+    <div class="detail-templ">
+        <div class="detail-templ-user">
+            <img class="detail-templ-avatar" [src]="article.author.avatar ? article.author.avatar : AVT_USER_DEF" />
+            <div class="detail-templ-info">
+                <h4>{{article.author.username}}</h4>
+                <span>August 15, 2022</span>
+            </div>
+        </div>
+        <div class="detail-templ-actions">
+            <ng-container *ngIf="user._id === article.author._id; else articleOfUserOther">
+                <button pButton icon="pi pi-check-square" label="Edit Article" (click)="handleEditArticle(article._id)"></button>
+                <button pButton icon="pi pi-times-circle" class="p-button-danger" label="Delete Article"></button>
+            </ng-container>
+            <ng-template #articleOfUserOther>
+                <button pButton icon="pi pi-plus" label="Follow {{article.author.username}}"></button>
+                <button pButton icon="pi pi-heart" class="p-button-success" label="Favorite Article"></button>
+            </ng-template>
+        </div>
+    </div>
+</ng-template>

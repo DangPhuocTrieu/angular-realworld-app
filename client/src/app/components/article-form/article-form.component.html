@@ -1,0 +1,9 @@
+<form class="form" [formGroup]="articleForm">
+    <div class="form-main container">
+        <input pInputText placeholder="Article Title" formControlName="title">
+        <input pInputText placeholder="What's this article about?" formControlName="description">
+        <textarea rows="8" pInputTextarea [autoResize]="true" placeholder="Write your article(in markdown)" formControlName="body"></textarea>
+        <input pInputText placeholder="Enter tags">
+        <button pButton class="p-button-success" label="Publish Article"></button>
+    </div>
+</form>
