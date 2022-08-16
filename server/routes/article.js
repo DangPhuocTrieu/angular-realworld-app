@@ -43,9 +43,17 @@ router.get('/:id', async (req, res) => {
 // ADD ARTICLE
 router.post('/', async (req, res) => {
     try {
+        const titleExtist = await Article.findOne({ title: req.body.title })
+        if(titleExtist) {
+            return res.status(401).json({ 
+                success: false, 
+                message: 'Title must be unique', 
+            })
+        }
+
         const newArticle = new Article(req.body)
         const savedArticle = await newArticle.save()
-
+        
         res.status(200).json({ 
             success: true, 
             message: 'Add article successfully!', 
@@ -54,7 +62,7 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: 'Internal server error'
+            message: error.message
         })
     }
 })

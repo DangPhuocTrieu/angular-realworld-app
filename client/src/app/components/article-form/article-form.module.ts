@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleFormComponent } from './article-form.component';
 import { ArticleFormRoutingModule } from './article-form.routing.module';
@@ -18,7 +20,11 @@ import { InputTextareaModule } from 'primeng/inputtextarea'
     ArticleFormRoutingModule,
     InputTextModule,
     InputTextareaModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class ArticleFormModule { }

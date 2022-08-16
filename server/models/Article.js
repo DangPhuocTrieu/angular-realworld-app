@@ -20,11 +20,13 @@ const articleSchema = new mongoose.Schema({
         }
     ],
     favoritesCount: {
-        type: Number
+        type: Number,
+        default: 0
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     }
 })
 

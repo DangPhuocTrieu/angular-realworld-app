@@ -18,4 +18,8 @@ export class ArticleService {
   getArticle(id: string): Observable<Data> {
     return this.http.get<Data>(`${this.BASE_URL}/${id}`)
   }
+
+  addArticle(data: any): Observable<Data> {
+    return this.http.post<Data>(this.BASE_URL, data)
+  }
 }

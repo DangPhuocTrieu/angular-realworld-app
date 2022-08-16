@@ -1,9 +1,19 @@
-<form class="form" [formGroup]="articleForm">
+<form class="form" [formGroup]="articleForm" (ngSubmit)="hanldeSubmitForm()">
     <div class="form-main container">
         <input pInputText placeholder="Article Title" formControlName="title">
         <input pInputText placeholder="What's this article about?" formControlName="description">
         <textarea rows="8" pInputTextarea [autoResize]="true" placeholder="Write your article(in markdown)" formControlName="body"></textarea>
-        <input pInputText placeholder="Enter tags">
-        <button pButton class="p-button-success" label="Publish Article"></button>
+        <div class="form-tags">
+            <input pInputText placeholder="Enter tags" formControlName="tagInput" (keypress)="handleAddTag($event)">
+            <ul class="form-tags-list" *ngIf="tags.length > 0">
+                <li *ngFor="let tag of tags; index as idx">
+                    <i class="pi pi-times" (click)="handleRemoveTag(idx)"></i>
+                    <span>{{tag}}</span>
+                </li>
+            </ul>
+        </div>
+        <button pButton type="submit" class="p-button-success" label="Publish Article" [disabled]="articleForm.invalid"></button>
     </div>
 </form>
+
+<p-toast></p-toast>
