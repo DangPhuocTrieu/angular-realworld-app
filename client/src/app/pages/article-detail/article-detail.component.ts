@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { avt_user_def } from 'src/app/constants';
 import { Article } from 'src/app/models/Article';
 import { User } from 'src/app/models/User';
@@ -15,6 +15,7 @@ export class ArticleDetailComponent implements OnInit {
   AVT_USER_DEF: string = avt_user_def
   article!: Article
   user!:User
+  isDisabled = false
 
   constructor(
     private router: Router,
@@ -37,5 +38,14 @@ export class ArticleDetailComponent implements OnInit {
 
   handleEditArticle(id: string): void {
     this.router.navigate([`/edit/${id}`])
+  }
+
+  handleRemoveArticle(id: string): void {
+    this.articleService.removeArticle(id).subscribe({
+      next: (res: Data) => {
+        this.isDisabled = true
+        setTimeout(() => this.router.navigateByUrl('/'), 1500)
+      }
+    })
   }
 }

@@ -1,0 +1,37 @@
+.setting {
+    width: 540px;
+    margin: 0 auto;
+
+    &-heading {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    &-wrapp {
+        display: flex;
+        flex-direction: column;
+        gap: 15px 0;
+        
+    }
+
+    &-submit {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+
+        button {
+            width: max-content;
+            position: relative;
+            left: 100%;
+            transform: translateX(-100%);
+        }
+    }
+
+    &-logout {
+        width: max-content;
+        margin-right: auto;
+        border: 1px solid red !important;
+    }
+}
+

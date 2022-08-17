@@ -22,4 +22,12 @@ export class ArticleService {
   addArticle(data: any): Observable<Data> {
     return this.http.post<Data>(this.BASE_URL, data)
   }
+
+  editArticle(data: any): Observable<Data> {
+    return this.http.put<Data>(`${this.BASE_URL}/${data._id}`, data)
+  }
+
+  removeArticle(id: string): Observable<Data> {
+    return this.http.delete<Data>(`${this.BASE_URL}/${id}`)
+  }
 }

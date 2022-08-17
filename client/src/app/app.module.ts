@@ -8,6 +8,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ArticleDetailModule } from './pages/article-detail/article-detail.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { HomeModule } from './pages/home/home.module';
+import { SettingComponent } from './pages/setting/setting.component';
+import { SettingModule } from './pages/setting/setting.module';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { HomeModule } from './pages/home/home.module';
     AuthModule,
     HomeModule,
     ArticleDetailModule,
-    ArticleFormModule
+    ArticleFormModule,
+    SettingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

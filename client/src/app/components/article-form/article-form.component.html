@@ -1,10 +1,10 @@
 <form class="form" [formGroup]="articleForm" (ngSubmit)="hanldeSubmitForm()">
     <div class="form-main container">
-        <input pInputText placeholder="Article Title" formControlName="title">
-        <input pInputText placeholder="What's this article about?" formControlName="description">
-        <textarea rows="8" pInputTextarea [autoResize]="true" placeholder="Write your article(in markdown)" formControlName="body"></textarea>
+        <input [class.Idisabled]="isDisabled" pInputText placeholder="Article Title" formControlName="title">
+        <input [class.Idisabled]="isDisabled" pInputText placeholder="What's this article about?" formControlName="description">
+        <textarea [class.Idisabled]="isDisabled" rows="8" pInputTextarea [autoResize]="true" placeholder="Write your article(in markdown)" formControlName="body"></textarea>
         <div class="form-tags">
-            <input pInputText placeholder="Enter tags" formControlName="tagInput" (keypress)="handleAddTag($event)">
+            <input [class.Idisabled]="isDisabled" pInputText placeholder="Enter tags" formControlName="tagInput" (keypress)="handleAddTag($event)">
             <ul class="form-tags-list" *ngIf="tags.length > 0">
                 <li *ngFor="let tag of tags; index as idx">
                     <i class="pi pi-times" (click)="handleRemoveTag(idx)"></i>
@@ -12,7 +12,7 @@
                 </li>
             </ul>
         </div>
-        <button pButton type="submit" class="p-button-success" label="Publish Article" [disabled]="articleForm.invalid"></button>
+        <button [class.Bdisabled]="isDisabled" pButton type="submit" class="p-button-success" label="Publish Article" [disabled]="articleForm.invalid"></button>
     </div>
 </form>
 

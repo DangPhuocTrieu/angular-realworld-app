@@ -1,0 +1,16 @@
+<form class="setting" [formGroup]="settingForm">
+    <h2 class="setting-heading">Your settings</h2>
+    <div class="setting-wrapp">
+        <input pInputText placeholder="URL of profile picture" formControlName="avatar">
+        <input pInputText placeholder="Username" formControlName="username">
+        <textarea rows="10" pInputTextarea [autoResize]="true" placeholder="Short bio about you" formControlName="bio"></textarea>
+        <input pInputText placeholder="Email" formControlName="email">
+        <input type="password" pInputText placeholder="New Password" formControlName="newPassword">
+        <div class="setting-submit">
+            <button pButton type="submit" class="p-button-success" label="Update Settings" [disabled]="settingForm.invalid" (click)="handleSubmit()"></button>
+        </div>
+        <button pButton class="p-button-text p-button-danger setting-logout" label="Or click here to logout." (click)="handleLogout()"></button>
+    </div>
+</form>
+
+<p-toast></p-toast>

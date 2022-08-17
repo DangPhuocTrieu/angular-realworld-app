@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ArticleFormComponent implements OnInit {
   articleForm!: FormGroup
   tags: string[] = []
+  isDisabled = false
 
   constructor(
     private articleService: ArticleService,
@@ -25,11 +26,9 @@ export class ArticleFormComponent implements OnInit {
     private fb: FormBuilder
   ) { 
     this.articleForm = this.fb.group({
-      _id: [''],
       title: ['', Validators.required],
       description: ['', Validators.required],
       body: ['', Validators.required],
-      author: [{}],
       tagList: [[]],
       tagInput: ['']
     })
@@ -45,6 +44,10 @@ export class ArticleFormComponent implements OnInit {
     if(idArticle) {
       this.articleService.getArticle(idArticle).subscribe((res: Data) => {
         const data: Article = res.data as Article
+
+        this.articleForm.addControl('_id', this.fb.control(''))
+        this.articleForm.addControl('author', this.fb.control({}))
+
         this.articleForm.patchValue(data)
         this.tags = (data.tagList && data.tagList.length > 0) ? [ ...data.tagList ] : []
       })
@@ -69,27 +72,40 @@ export class ArticleFormComponent implements OnInit {
   }
 
   hanldeSubmitForm(): void {
+    this.articleForm.removeControl('tagInput')
+
     if(this.getControlValue('_id')) {
       // EDIT ARTICLE
+      this.articleService.editArticle(this.articleForm.value).subscribe({
+        next: (res: Data) => {
+          this.isDisabled = true
+          const articleUpdated = res.data as Article
+          
+          setTimeout(() => this.router.navigateByUrl(`/article/${articleUpdated._id}`), 2000)
+        },
+        error: ({ error }) => {
+          this.messageService.add({ severity:'error', summary:'Failed', detail: error.message })
+          this.articleForm.addControl('tagInput', this.fb.control(''))
+        }
+      })
     }
     else {
       // CREATE ARTICLE
-      console.log(this.articleForm.get('_id'))
-      console.log({
+      this.articleService.addArticle({
         ...this.articleForm.value,
         author: this.userService.getCurrentUser()._id
+      }).subscribe({
+        next: (res: Data) => {
+          this.isDisabled = true
+          const article = res.data as Article
+          
+          setTimeout(() => this.router.navigateByUrl(`/article/${article._id}`), 2000)
+        },
+        error: ({ error }) => {
+          this.messageService.add({ severity:'error', summary:'Failed', detail: error.message })
+          this.articleForm.addControl('tagInput', this.fb.control(''))
+        }
       })
-
-      // this.articleService.addArticle({
-      //   ...this.articleForm.value,
-      //   author: this.userService.getCurrentUser()._id
-      // }).subscribe({
-      //   next: (res: Data) => {
-      //     const article = res.data as Article
-      //     this.router.navigateByUrl(`/article/${article._id}`)
-      //   },
-      //   error: ({ error }) => this.messageService.add({ severity:'error', summary:'Failed', detail: error.message })
-      // })
     }
   }
 

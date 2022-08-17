@@ -1,6 +1,7 @@
 @import '../../scss/mixin.scss';
 
 .form {
+    padding-bottom: 300px;
     width: 50%;
     margin: 0 auto;
     &-main {
@@ -41,4 +42,14 @@
             }
         }
     }
+}
+
+.Idisabled {
+    background-color: #eee;
+    pointer-events: none;
+}
+
+.Bdisabled {
+    opacity: 0.6;
+    pointer-events: none;
 }

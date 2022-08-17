@@ -36,7 +36,7 @@
         <div class="detail-templ-actions">
             <ng-container *ngIf="user._id === article.author._id; else articleOfUserOther">
                 <button pButton icon="pi pi-check-square" label="Edit Article" (click)="handleEditArticle(article._id)"></button>
-                <button pButton icon="pi pi-times-circle" class="p-button-danger" label="Delete Article"></button>
+                <button pButton icon="pi pi-times-circle" class="p-button-danger" [disabled]="isDisabled" label="Delete Article" (click)="handleRemoveArticle(article._id)"></button>
             </ng-container>
             <ng-template #articleOfUserOther>
                 <button pButton icon="pi pi-plus" label="Follow {{article.author.username}}"></button>

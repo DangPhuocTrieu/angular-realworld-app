@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { CURR_USER } from 'src/app/constants';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -50,7 +51,7 @@ export class AuthComponent implements OnInit {
     else {
       this.authService.login(form.value).subscribe({
         next: data => {
-          localStorage.setItem('currentUser', JSON.stringify(data.data))
+          localStorage.setItem(CURR_USER, JSON.stringify(data.data))
           this.router.navigateByUrl('/')
         },
         error: ({ error }) => this.messageService.add({severity:'error', summary:'Failed', detail: error.message })
