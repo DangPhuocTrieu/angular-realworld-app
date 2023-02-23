@@ -46,7 +46,7 @@ export class ArticleComponent implements OnInit, OnChanges {
       else {
         const currentUser = this.userService.getCurrentUser()
         const articles = data.data as Article[]
-        this.articles = articles.filter((item: Article) => item.author._id === currentUser._id)
+        this.articles = articles.filter((item: Article) => item.author?._id === currentUser._id)
       }
 
       this.isLoading = false

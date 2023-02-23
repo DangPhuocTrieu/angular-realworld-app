@@ -10,7 +10,6 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AuthComponent } from './auth.component';
-import { AuthRoutingModule } from './auth.routing.module';
 
 @NgModule({
   imports: [
@@ -18,7 +17,6 @@ import { AuthRoutingModule } from './auth.routing.module';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AuthRoutingModule,
     RouterModule,
     InputTextModule,
     PasswordModule,

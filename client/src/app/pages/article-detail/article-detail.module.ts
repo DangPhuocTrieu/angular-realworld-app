@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleDetailRoutingModule } from './auth.routing.module';
 import { ArticleDetailComponent } from './article-detail.component';
 import { ButtonModule } from 'primeng/button'
 import { InputTextareaModule } from 'primeng/inputtextarea'
@@ -12,7 +11,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea'
   ],
   imports: [
     CommonModule,
-    ArticleDetailRoutingModule,
     ButtonModule,
     InputTextareaModule
   ]
